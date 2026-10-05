@@ -29,7 +29,7 @@ behaves differently, open an issue with a log.
 2. Find the port: `py -m serial.tools.list_ports`
 3. Set up and run the PC side:
 
-       powershell -ExecutionPolicy Bypass -File setup_and_run.ps1 -Serial COM4
+       powershell -ExecutionPolicy Bypass -File setup_and_run.ps1 --serial COM4
 
    That installs ViGEmBus, `vgamepad` and `pyserial` if they are missing, adds the firewall rule
    for the optional Pi path, then starts the feeder. On the first run Windows will ask about the
