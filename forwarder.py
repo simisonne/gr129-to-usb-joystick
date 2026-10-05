@@ -22,7 +22,7 @@ import time
 
 import serial
 
-out_csv = sys.argv[1] if len(sys.argv) > 1 else "/home/raspfour-1/gr129_live.csv"
+out_csv = sys.argv[1] if len(sys.argv) > 1 else "gr129_live.csv"
 ser_port = sys.argv[2] if len(sys.argv) > 2 else "/dev/ttyACM1"
 
 dest = None  # (ip, 5005) learned from HELLO

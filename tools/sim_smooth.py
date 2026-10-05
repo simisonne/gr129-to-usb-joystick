@@ -15,7 +15,10 @@ import math
 import random
 import sys
 
-sys.path.insert(0, "/workspace/gr129")
+import os
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)                       # sibling sim modules
+sys.path.insert(0, os.path.dirname(HERE))      # feeder.py at the repo root
 from feeder import Smoother, AXES  # noqa: E402
 
 TAU = 2.0 * math.pi

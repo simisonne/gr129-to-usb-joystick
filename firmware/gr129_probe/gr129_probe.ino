@@ -44,6 +44,10 @@ static const uint8_t PKT_LEN = 16;
 static const uint8_t ADDR_A[5] = {0x6D, 0x6A, 0x73, 0x73, 0x73};
 #define GUESS_STEP 2
 
+// the boot banner is the only place a log states its version, so keep it in
+// step with the file name (it said v14 for every build from v14 to v17)
+#define FW_VERSION "v18"
+
 enum St { SCOUT, PARK, WALK };
 St st = SCOUT;
 
@@ -202,7 +206,7 @@ void setTbl(uint8_t p, uint8_t k, uint8_t ch) {
 void setup() {
   Serial.begin(115200);
   delay(1500);
-  outS("S,boot,GR129 walker v14\n");
+  outS("S,boot,GR129 walker " FW_VERSION "\n");
   outFlush();
   if (!radio.begin()) {
     Serial.println(F("S,err,begin"));

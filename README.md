@@ -25,7 +25,7 @@ behaves differently, open an issue with a log.
 ## Quick start
 
 1. Flash the board. Double tap the reset button, two clicks inside half a second, so the
-   bootloader drive appears. Drag `gr129_v17.uf2` onto that drive. The board reboots on its own.
+   bootloader drive appears. Drag `gr129_v18.uf2` onto that drive. The board reboots on its own.
 2. Find the port: `py -m serial.tools.list_ports`
 3. Set up and run the PC side:
 
@@ -157,8 +157,8 @@ You only need this if you want to change the firmware. The prebuilt UF2 in this 
 working build.
 
     arduino-cli compile --fqbn arduinonrf:nrf52:promicro_nrf52840:bootloader=promicronosduf2 \
-      --output-dir build gr129_probe
-    python3 uf2conv.py build/gr129_probe.ino.hex -c -f 0xada52840 -o gr129_v17.uf2
+      --output-dir build firmware/gr129_probe
+    python3 tools/uf2conv.py build/gr129_probe.ino.hex -c -f 0xada52840 -o gr129_v18.uf2
 
 The FQBN matters. The `arduinonrf` core, installed from GitHub as `dunknowcoding/ArduinoNRF`, links
 the application at 0x1000 and sets up the vector table the way the nice!nano bootloader expects. The
@@ -171,13 +171,15 @@ radio in the nRF52840.
 
 | File | What it is |
 | --- | --- |
-| `gr129_v17.uf2` | prebuilt firmware, drag onto the bootloader drive |
-| `gr129_probe/gr129_probe.ino` | the firmware source, the slot walker |
+| `gr129_v18.uf2` | prebuilt firmware, drag onto the bootloader drive |
+| `firmware/gr129_probe/gr129_probe.ino` | the firmware source, the slot walker |
 | `feeder.py` | the Windows side, resampling and the virtual pad |
 | `forwarder.py` | optional Raspberry Pi side, serial to CSV plus UDP JSON |
 | `setup_and_run.ps1` | Windows one shot setup and run |
-| `sim_smooth.py` | offline harness that replays synthetic streams through the resampler and scores smoothness |
-| `uf2conv.py`, `uf2families.json` | UF2 conversion, from Microsoft's uf2 repository |
+| `tools/sim_smooth.py` | offline harness that replays synthetic streams through the resampler and scores smoothness |
+| `tools/sim_sweep.py` | parameter sweep that chose the resampling defaults, built on the harness |
+| `tools/uf2conv.py`, `tools/uf2families.json` | UF2 conversion, from Microsoft's uf2 repository |
+| `firmware/gr129_sniff`, `firmware/gr129_spectrum` | older diagnostic sketches, for looking at another unit's channel use and band energy. Not part of the normal path |
 | `PROTOCOL.md` | the reverse engineered radio protocol |
 
 ## Credits

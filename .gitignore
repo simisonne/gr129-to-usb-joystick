@@ -7,4 +7,7 @@ capture*.csv
 feeder.log
 *.bak
 *.uf2
-!gr129_v17.uf2
+!gr129_v18.uf2
+# local working material, not published
+archive/
+captures/
