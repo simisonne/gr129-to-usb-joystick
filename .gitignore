@@ -1,0 +1,10 @@
+# working artefacts, not part of the project
+build*/
+__pycache__/
+*.pyc
+live*.csv
+capture*.csv
+feeder.log
+*.bak
+*.uf2
+!gr129_v17.uf2
